@@ -1,0 +1,126 @@
+.cartitems {
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(60, 72, 100, 0.08);
+  margin: 32px 0;
+  padding: 32px 4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cartitems-format-main {
+  display: grid;
+  grid-template-columns: 120px 1fr 100px 120px 100px 80px;
+  gap: 18px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ff4141;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.cartitems-format {
+  display: grid;
+  grid-template-columns: 120px 1fr 100px 120px 100px 80px;
+  gap: 18px;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  padding: 12px 0;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 2px 8px rgba(255, 65, 65, 0.08);
+}
+
+.cartitems-product-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.cartitems-quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cartitems-quantity button {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: #ff4141;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cartitems-quantity button:hover {
+  background: #ff6f61;
+}
+
+.cartitems-quantity span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #171717;
+  min-width: 24px;
+  text-align: center;
+}
+
+.cartitems-remove-btn {
+  background: #eee;
+  color: #ff4141;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cartitems-remove-btn:hover {
+  background: #ff4141;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cartitems-format-main,
+  .cartitems-format {
+    grid-template-columns: 60px 1fr 60px 80px 60px 50px;
+    font-size: 1rem;
+    gap: 10px;
+    max-width: 100%;
+  }
+  .cartitems-product-img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cartitems {
+    padding: 12px 2vw;
+  }
+  .cartitems-format-main,
+  .cartitems-format {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    font-size: 0.95rem;
+  }
+  .cartitems-format-main p,
+  .cartitems-format p {
+    margin: 0;
+    padding: 0;
+  }
+}
