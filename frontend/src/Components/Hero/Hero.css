@@ -64,3 +64,28 @@
 .hero-right img {
   height: 80%;
 }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .hero{
+    height: auto;
+    flex-direction: column;
+    padding: 32px 16px;
+    gap: 24px;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-left{
+    padding-left: 0;
+    gap: 14px;
+    width: 100%;
+    align-items: center;
+  }
+  .hero-left h2{font-size: 20px;}
+  .hero-left p{font-size: 36px;}
+  .hero-hand-icon{gap:12px; justify-content: center;}
+  .hero-hand-icon p{font-size: 32px;}
+  .hero-hand-icon img{width:56px;height:56px;}
+  .hero-latest-btn{width: 220px;height:56px;font-size: 18px;}
+  .hero-right img{height: 280px;}
+}

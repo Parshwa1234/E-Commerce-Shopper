@@ -22,3 +22,11 @@
     margin-top: 50px;
     gap: 30px;
 } 
+
+/* Mobile */
+@media (max-width: 800px) {
+    .new-collections{padding: 0 16px; width: 100%; text-align: center; margin-bottom:50px;}
+    .new-collections h1{font-size: 28px;}
+    .new-collections hr{width: 120px; height: 4px; margin: 0 auto;}
+    .collections{grid-template-columns: 1fr; gap: 16px; width: 100%;}
+}

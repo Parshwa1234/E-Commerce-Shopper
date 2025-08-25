@@ -83,3 +83,18 @@
     font-size: 2.2rem;
   }
 }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .offers{
+    width: 100%;
+    margin: 24px 0;
+    padding: 24px 16px;
+    gap: 16px;
+    text-align: center;
+  }
+  .offers-left h1{font-size: 1.8rem;}
+  .offers-left p{font-size: 1rem;}
+  .offers-left button{width: 180px;height: 48px;font-size: 1rem;}
+  .offers-right img{width: 200px;}
+}

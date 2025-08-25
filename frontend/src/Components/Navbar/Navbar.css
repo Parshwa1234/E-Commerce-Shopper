@@ -73,3 +73,34 @@
     background: red;
     color: while;
 }
+
+/* Mobile */
+@media (max-width: 800px) {
+    .navbar{
+        justify-content: space-between;
+        padding: 8px 16px;
+        width: 100%;
+    }
+    .nav-logo p{
+        font-size: 20px;
+    }
+    .nav-menu{
+        gap: 12px;
+        font-size: 14px;
+    }
+    .nav-login-cart{
+        gap: 12px;
+    }
+    .nav-login-cart button{
+        width: 100px;
+        height: 36px;
+        font-size: 14px;
+    }
+    .nav-cart-count{
+        margin-top: -24px;
+        margin-left: -30px;
+        font-size: 10px;
+        width: 16px;
+        height: 16px;
+    }
+}

@@ -64,3 +64,9 @@
     gap: 12px;
   }
 }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .relatedproducts h1{font-size: 1.6rem; text-align: center;}
+  .relatedproducts-item{gap: 16px; flex-direction: column; align-items: center; width: 100%;}
+}

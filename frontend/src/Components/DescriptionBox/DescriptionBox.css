@@ -58,3 +58,9 @@
     padding: 8px 16px;
   }
 }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .descriptionbox{padding: 24px 16px; width: 100%; text-align: center;}
+  .descriptionbox-nav-box{font-size: 1rem;}
+}

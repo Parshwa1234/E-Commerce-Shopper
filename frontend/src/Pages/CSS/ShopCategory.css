@@ -27,11 +27,19 @@
     justify-content: center;
     align-items: center;
     margin: 150px auto;
-    width:233px;
+    width:350px;
     height: 70px;
     border-radius: 75px;
     background: #ededed;
     color:#787878;
     font-size: 18px;
     font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+    .shopcategory-indexSort{margin: 0 16px; width: 100%; text-align: center;}
+    .shopcategory-banner{width: 100%; display: block;}
+    .shopcategory-products{grid-template-columns: 1fr; row-gap: 24px; margin: 20px 0; width: 100%;}
+    .shopcategory-loadmore{width: 240px; height: 56px; font-size: 16px; margin: 60px auto;}
 }

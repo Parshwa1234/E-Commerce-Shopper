@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .App-header{min-height: auto; padding: 24px;}
+}

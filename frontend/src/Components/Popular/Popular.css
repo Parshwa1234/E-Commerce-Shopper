@@ -22,3 +22,11 @@
     gap: 30px;
     
 } 
+
+/* Mobile */
+@media (max-width: 800px) {
+    .popular{height: auto;padding: 0 16px; width: 100%; text-align: center;}
+    .popular h1{font-size: 28px;}
+    .popular hr{width:120px;height:4px; margin: 0 auto;}
+    .popular-item{gap:16px;flex-direction: column;align-items: center;width: 100%;}
+}

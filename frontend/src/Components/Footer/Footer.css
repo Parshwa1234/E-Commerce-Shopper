@@ -52,3 +52,13 @@
     height:3px;
     background: #c7c7c7;
 }
+
+/* Mobile */
+@media (max-width: 800px) {
+    .footer{gap:28px;padding: 0; width: 100%;}
+    .footer-logo p{font-size: 28px;}
+    .footer-links{gap:16px;flex-wrap: wrap;}
+    .footer-social-icon{gap:12px;}
+    .footer-icons-container{padding:8px;}
+    .footer p,.footer li{font-size: 14px;}
+}
