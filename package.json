@@ -2,9 +2,9 @@
   "name": "e-commerce-app",
   "version": "1.0.0",
   "description": "E-commerce application with frontend, backend, and admin panel",
-  "main": "index.js",
+  "main": "backend/index.js",
   "scripts": {
-    "start": "cd backend && node index.js",
+    "start": "node backend/index.js",
     "build": "cd frontend && npm install && npm run build",
     "backend": "cd backend && node index.js",
     "frontend": "cd frontend && npm start",

@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react';
 const Popular = () => {
   const [popularProducts,setPopularProducts]=useState([]);
   useEffect(()=>{
-      fetch('https://e-commerce-shopper.onrender.com/popularinwomen')
+      fetch('https://e-commerce-shopper-shi5.onrender.com/popularinwomen')
       .then((response)=>response.json())
       .then((data)=>setPopularProducts(data));
   },[])

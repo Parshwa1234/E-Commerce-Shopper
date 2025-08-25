@@ -5,7 +5,7 @@ const RelatedProducts = ({category}) => {
   const [new_collection,setNewCollection]=useState([]);
   useEffect(() => {
     if (!category) return; 
-    fetch(`https://e-commerce-shopper.onrender.com/relatedproducts?category=${category}`)
+    fetch(`https://e-commerce-shopper-shi5.onrender.com/relatedproducts?category=${category}`)
       .then((response) => response.json())
       .then((data) => setNewCollection(data))
       .catch((err) => console.error("Error fetching related products:", err));
