@@ -30,9 +30,20 @@ app.use(cors({
   credentials: true
 }));
 
-mongoose.connect(process.env.MONGO_URL)
+// Resolve MongoDB connection string from environment variables with sensible fallbacks
+const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || process.env.MONGO_URL || process.env.DATABASE_URL;
+
+if (!mongoUri) {
+    console.error('MongoDB connection string is missing. Please set one of: MONGODB_URI, MONGO_URI, MONGO_URL, or DATABASE_URL');
+    process.exit(1);
+}
+
+mongoose.connect(mongoUri)
 .then(() => console.log("MongoDB connected successfully"))
-.catch((err) => console.error("MongoDB connection error:", err));
+.catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+});
 
 // API creation 
 
@@ -300,3 +311,12 @@ app.listen(port, (err) => {
     if(!err) console.log(`Server is running on port ${port}`);
     else console.error("Server error:", err);
 })
+
+// Serve frontend build in production
+const frontendBuildPath = path.join(__dirname, '../frontend/build');
+app.use(express.static(frontendBuildPath));
+
+app.get('*', (req, res) => {
+    const indexHtmlPath = path.join(frontendBuildPath, 'index.html');
+    res.sendFile(indexHtmlPath);
+});
