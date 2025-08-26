@@ -30,10 +30,6 @@ mongoose.connect(mongoUri)
 
 // API creation 
 
-app.get("/", (req, res) => {
-    res.send("Express server is running");
-})
-
 
 // image storage engine 
 
