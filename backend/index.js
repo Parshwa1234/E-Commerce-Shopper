@@ -46,12 +46,10 @@ const upload=multer({storage:storage});
 
 app.use('/images',express.static('upload/images'));
 app.post('/upload', upload.single('product'), (req, res) => {
-    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-    const host = req.headers['x-forwarded-host'] || req.get('host');
-    const baseUrl = `${protocol}://${host}`;
+    // Return relative path so it works across environments (no hardcoded host)
     res.json({
         success:1,
-        image_url:`${baseUrl}/images/${req.file.filename}`
+        image_url:`/images/${req.file.filename}`
     });
 });
 
