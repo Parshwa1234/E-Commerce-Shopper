@@ -53,6 +53,25 @@ app.post('/upload', upload.single('product'), (req, res) => {
     });
 });
 
+// Normalize image URLs coming from historical data
+const normalizeImageUrl = (imagePath) => {
+    if (!imagePath || typeof imagePath !== 'string') return imagePath;
+    // convert any localhost absolute URLs to relative paths
+    const match = imagePath.match(/\/images\/(.+)$/);
+    if (match) {
+        return `/images/${match[1]}`;
+    }
+    return imagePath;
+};
+
+const normalizeProduct = (product) => {
+    if (!product) return product;
+    const plain = product.toObject ? product.toObject() : product;
+    return { ...plain, image: normalizeImageUrl(plain.image) };
+};
+
+const normalizeProducts = (products) => Array.isArray(products) ? products.map(normalizeProduct) : products;
+
 // schema for creating products
 
 const Product=mongoose.model("Product",{
@@ -132,6 +151,7 @@ app.post('/removeproduct',async(req,res)=>{
 
 app.get('/allproducts',async(req,res)=>{
    let products=await Product.find({});
+   products = normalizeProducts(products);
    console.log("all products fetched");
    res.send(products);
 })
@@ -216,6 +236,7 @@ app.post('/login',async(req,res)=>{
 //creating endpoint for new collection data 
 app.get('/newcollections',async(req,res)=>{
     let products=await Product.find({});
+    products = normalizeProducts(products);
     let newcollection=products.slice(1).slice(-8);
     console.log("New collection fetched");
     res.send(newcollection);
@@ -224,6 +245,7 @@ app.get('/newcollections',async(req,res)=>{
 //creating endpoint for popular in women section 
 app.get('/popularinwomen',async(req,res)=>{
     let products=await Product.find({category:"women"});
+    products = normalizeProducts(products);
     let popularinwomen=products.slice(0,4);
     console.log("Popular in women fetched");
     res.send(popularinwomen);
@@ -278,7 +300,8 @@ app.get('/relatedproducts', async (req, res) => {
             return res.status(400).json({ error: 'Category is required' });
         }
 
-        const products = await Product.find({ category: category });
+        let products = await Product.find({ category: category });
+        products = normalizeProducts(products);
         const related = products.slice(0, 4); // only return 4 products
         res.send(related);
     } catch (error) {
