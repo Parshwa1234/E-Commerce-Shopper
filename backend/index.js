@@ -302,7 +302,7 @@ app.listen(port, (err) => {
 const frontendBuildPath = path.join(__dirname, '../frontend/build');
 app.use(express.static(frontendBuildPath));
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     const indexHtmlPath = path.join(frontendBuildPath, 'index.html');
     res.sendFile(indexHtmlPath);
 });
