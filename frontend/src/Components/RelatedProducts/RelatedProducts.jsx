@@ -5,7 +5,7 @@ const RelatedProducts = ({category}) => {
   const [new_collection,setNewCollection]=useState([]);
   useEffect(() => {
     if (!category) return; 
-    fetch(`http://localhost:4000/relatedproducts?category=${category}`)
+    fetch(`/relatedproducts?category=${category}`)
       .then((response) => response.json())
       .then((data) => setNewCollection(data))
       .catch((err) => console.error("Error fetching related products:", err));

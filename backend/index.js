@@ -11,24 +11,7 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 
-const allowedOrigins = [
-  'https://e-commerce-shopper.netlify.app', // your Netlify URL
-  'http://localhost:5173', // local development URL (optional)
-  'http://localhost:3000'
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+app.use(cors());
 
 // Resolve MongoDB connection string from environment variables with sensible fallbacks
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || process.env.MONGO_URL || process.env.DATABASE_URL;
@@ -67,9 +50,12 @@ const upload=multer({storage:storage});
 
 app.use('/images',express.static('upload/images'));
 app.post('/upload', upload.single('product'), (req, res) => {
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+    const host = req.headers['x-forwarded-host'] || req.get('host');
+    const baseUrl = `${protocol}://${host}`;
     res.json({
         success:1,
-        image_url:`http://localhost:${port}/images/${req.file.filename}`
+        image_url:`${baseUrl}/images/${req.file.filename}`
     });
 });
 
