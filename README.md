@@ -21,6 +21,8 @@ Live Link:- https://e-commerce-shopper-shi5.onrender.com/  (hosted on render)
 
 <img width="1919" height="1062" alt="image" src="https://github.com/user-attachments/assets/ada77528-d5e8-4d2c-8261-83e6c3a2c875" />
 
+<img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/6fe3e4c3-4b07-4e16-a608-b7ecb128a4f9" />
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/e6e1d33c-ec45-4413-b49c-2149fe6bf090" />
 
 "A user-centric e-commerce platform designed to deliver a seamless and intuitive shopping experience.
