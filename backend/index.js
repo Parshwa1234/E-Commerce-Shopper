@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 const cors = require('cors');
 require('dotenv').config();
 app.use(express.json());
@@ -44,7 +45,11 @@ const upload=multer({storage:storage});
 
 // creating upload endpoint for images
 
-app.use('/images',express.static('upload/images'));
+const imagesDir = path.join(__dirname, 'upload', 'images');
+if (!fs.existsSync(imagesDir)) {
+    console.warn(`Images directory not found at ${imagesDir}. Ensure it exists in deployment.`);
+}
+app.use('/images', express.static(imagesDir));
 app.post('/upload', upload.single('product'), (req, res) => {
     // Return relative path so it works across environments (no hardcoded host)
     res.json({
