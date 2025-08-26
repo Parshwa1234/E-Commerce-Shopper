@@ -11,6 +11,25 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 
+const allowedOrigins = [
+  'https://e-commerce-shopper.netlify.app', // your Netlify URL
+  'http://localhost:5173', // local development URL (optional)
+  'http://localhost:3000'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 mongoose.connect(process.env.MONGO_URL)
 .then(() => console.log("MongoDB connected successfully"))
 .catch((err) => console.error("MongoDB connection error:", err));
