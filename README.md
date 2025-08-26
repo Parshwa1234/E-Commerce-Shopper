@@ -11,6 +11,8 @@ Live Link:- https://e-commerce-shopper-shi5.onrender.com/  (hosted on render)
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/868b9702-76e5-480c-be63-61e55038f658" />
 
+<img width="1915" height="1079" alt="image" src="https://github.com/user-attachments/assets/ba3ae611-b3a0-4120-a37d-5685fca3cb0e" />
+
 <img width="1919" height="847" alt="image" src="https://github.com/user-attachments/assets/6e83bfca-c926-4c9e-bfa1-e3ddb5db7c46" />
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/f6fc344e-0e36-442b-a965-909d23909cdd" />
