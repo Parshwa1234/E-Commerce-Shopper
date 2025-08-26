@@ -13,11 +13,11 @@ app.use(cors());
 
 app.use(cors());
 
-// Resolve MongoDB connection string from environment variables with sensible fallbacks
-const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || process.env.MONGO_URL || process.env.DATABASE_URL;
+// Resolve MongoDB connection string from a single required env var
+const mongoUri = process.env.MONGODB_URL;
 
 if (!mongoUri) {
-    console.error('MongoDB connection string is missing. Please set one of: MONGODB_URI, MONGO_URI, MONGO_URL, or DATABASE_URL');
+    console.error('MongoDB connection string is missing. Please set MONGODB_URL');
     process.exit(1);
 }
 
