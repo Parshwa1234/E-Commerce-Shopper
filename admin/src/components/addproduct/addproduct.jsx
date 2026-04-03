@@ -14,6 +14,17 @@ const addproduct = () => {
     })
 
     const API_BASE = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '';
+    const BACKEND_BASE = process.env.REACT_APP_BACKEND_URL || '';
+    const isLocal = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost';
+    const withHost = (src) => {
+      if (!src) return src;
+      if (src.startsWith('http://') || src.startsWith('https://')) return src;
+      if (src.startsWith('/images/')) {
+        if (isLocal) return `http://localhost:4000${src}`;
+        return `${BACKEND_BASE}${src}`;
+      }
+      return src;
+    };
 
     const Add_Product=async()=>{
         console.log(productDetails);

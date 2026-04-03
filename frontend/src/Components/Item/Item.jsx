@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 import './Item.css';
 const Item = (props) => {
+  const BACKEND_BASE = process.env.REACT_APP_BACKEND_URL || '';
   const isLocal = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost';
   const withHost = (src) => {
     if (!src) return src;
-    if (isLocal && src.startsWith('/images/')) return `http://localhost:4000${src}`;
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    if (src.startsWith('/images/')) {
+      if (isLocal) return `http://localhost:4000${src}`;
+      return `${BACKEND_BASE}${src}`;
+    }
     return src;
   };
   return (

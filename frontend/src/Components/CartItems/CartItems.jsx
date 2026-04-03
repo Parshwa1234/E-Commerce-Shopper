@@ -4,6 +4,17 @@ import './CartItems.css';
 
 const CartItems = () => {
   const { all_product, cartItems, addToCart, removeFromCart } = useContext(ShopContext);
+  const BACKEND_BASE = process.env.REACT_APP_BACKEND_URL || '';
+  const isLocal = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost';
+  const withHost = (src) => {
+    if (!src) return src;
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    if (src.startsWith('/images/')) {
+      if (isLocal) return `http://localhost:4000${src}`;
+      return `${BACKEND_BASE}${src}`;
+    }
+    return src;
+  };
 
   return (
     <div className='cartitems'>
@@ -18,7 +29,7 @@ const CartItems = () => {
       <hr />
       {all_product.filter(product => cartItems[product.id] > 0).map(product => (
         <div className="cartitems-format" key={product.id}>
-          <img src={product.image} alt={product.name} className="cartitems-product-img" />
+          <img src={withHost(product.image)} alt={product.name} className="cartitems-product-img" />
           <p>{product.name}</p>
           <p>${product.new_price}</p>
           <div className="cartitems-quantity">
