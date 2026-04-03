@@ -1,5 +1,5 @@
 # Shopper
-Live Link:- https://e-commerce-shopper-shi5.onrender.com/  (hosted on render)
+Live Link:- https://e-commerce-shop-kzv0.onrender.com/  (hosted on render)
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/7d99b8af-a06b-4427-aa3b-817c634867e2" />
 
