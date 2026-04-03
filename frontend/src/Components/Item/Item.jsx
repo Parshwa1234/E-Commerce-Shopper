@@ -7,8 +7,10 @@ const Item = (props) => {
     if (!src) return src;
     if (src.startsWith('http://') || src.startsWith('https://')) return src;
     if (src.startsWith('/images/')) {
-      if (isLocal) return `http://localhost:4000${src}`;
-      return `${BACKEND_BASE}${src}`;
+      // In production, frontend and backend are on same domain, so use relative URLs
+      // Only use full URL for localhost development
+      if (isLocal && BACKEND_BASE) return `${BACKEND_BASE}${src}`;
+      return src; // Use relative URL in production
     }
     return src;
   };
