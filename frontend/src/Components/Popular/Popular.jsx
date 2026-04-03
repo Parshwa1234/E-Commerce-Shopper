@@ -3,8 +3,9 @@ import './Popular.css';
 import { useState,useEffect } from 'react';
 const Popular = () => {
   const [popularProducts,setPopularProducts]=useState([]);
+  const API_BASE = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '';
   useEffect(()=>{
-      fetch('/popularinwomen')
+      fetch(`${API_BASE}/popularinwomen`)
       .then((response)=>response.json())
       .then((data)=>setPopularProducts(data));
   },[])

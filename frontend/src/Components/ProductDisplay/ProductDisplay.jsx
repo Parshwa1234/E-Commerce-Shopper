@@ -6,17 +6,23 @@ import './ProductDisplay.css';
 const ProductDisplay = (props) => {
     const { product } = props;
     const {addToCart} = useContext(ShopContext);
+    const isLocal = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost';
+    const withHost = (src) => {
+      if (!src) return src;
+      if (isLocal && src.startsWith('/images/')) return `http://localhost:4000${src}`;
+      return src;
+    };
   return (
     <div className='productdisplay'>
       <div className="productdisplay-left">
         <div className='productdisplay-img-list'>
-            <img src={product.image} alt="product image not found" />
-            <img src={product.image} alt="product image not found" />
-            <img src={product.image} alt="product image not found" />
-            <img src={product.image} alt="product image not found" />
+            <img src={withHost(product.image)} alt="product image not found" />
+            <img src={withHost(product.image)} alt="product image not found" />
+            <img src={withHost(product.image)} alt="product image not found" />
+            <img src={withHost(product.image)} alt="product image not found" />
         </div>
         <div className='productdisplay-img'>
-            <img className='productdisplay-main-img' src={product.image} alt="product image not found" />
+            <img className='productdisplay-main-img' src={withHost(product.image)} alt="product image not found" />
         </div>
       </div>
       <div className="productdisplay-right">

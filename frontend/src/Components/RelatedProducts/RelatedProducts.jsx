@@ -3,9 +3,10 @@ import './RelatedProducts.css';
 import { useState,useEffect } from 'react';
 const RelatedProducts = ({category}) => {
   const [new_collection,setNewCollection]=useState([]);
+  const API_BASE = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '';
   useEffect(() => {
     if (!category) return; 
-    fetch(`/relatedproducts?category=${category}`)
+    fetch(`${API_BASE}/relatedproducts?category=${category}`)
       .then((response) => response.json())
       .then((data) => setNewCollection(data))
       .catch((err) => console.error("Error fetching related products:", err));

@@ -3,8 +3,9 @@ import './NewCollections.css';
 import { useState,useEffect } from 'react';
 const NewCollections = () => {
   const [new_collection,setNewCollection]=useState([]);
+  const API_BASE = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '';
   useEffect(()=>{
-      fetch('/newcollections')
+      fetch(`${API_BASE}/newcollections`)
       .then((response)=>response.json())
       .then((data)=>setNewCollection(data));
   },[])

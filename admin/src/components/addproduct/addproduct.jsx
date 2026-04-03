@@ -13,6 +13,8 @@ const addproduct = () => {
         old_price:"",
     })
 
+    const API_BASE = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '';
+
     const Add_Product=async()=>{
         console.log(productDetails);
         let responseData;
@@ -20,7 +22,7 @@ const addproduct = () => {
 
         let formData=new FormData();
         formData.append('product',image);
-        await fetch('/upload',{
+        await fetch(`${API_BASE}/upload`,{
             method:'POST',
             headers:{
                 Accept:'/application/json',
@@ -33,7 +35,7 @@ const addproduct = () => {
         {
             product.image=responseData.image_url;
             console.log(product);
-            await fetch('/addproduct',{
+            await fetch(`${API_BASE}/addproduct`,{
                 method:'POST',
                 headers:{
                     Accept:'application/json',

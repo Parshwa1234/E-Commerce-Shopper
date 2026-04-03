@@ -10,11 +10,12 @@ const LoginSignup = () => {
   const changeHandler=(e)=>{
     setFormData({...formData,[e.target.name]:e.target.value})
   }
+  const API_BASE = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '';
 
   const login=async()=>{
     console.log("login function executed",formData);
     let responseData;
-    await fetch('/login',{
+    await fetch(`${API_BASE}/login`,{
       method:"POST",
       headers:{
         Accept:'application/form-data',
@@ -36,7 +37,7 @@ const LoginSignup = () => {
   const signup=async()=>{
     console.log("signup function executed",formData)
     let responseData;
-    await fetch('/signup',{
+    await fetch(`${API_BASE}/signup`,{
       method:"POST",
       headers:{
         Accept:'application/form-data',
