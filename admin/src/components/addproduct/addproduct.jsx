@@ -14,7 +14,7 @@ const addproduct = () => {
     })
 
     const API_BASE = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' ? 'http://localhost:4000' : '';
-    const BACKEND_BASE = process.env.REACT_APP_BACKEND_URL || '';
+    const BACKEND_BASE = import.meta.env.VITE_BACKEND_URL || '';
     const isLocal = typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost';
     const withHost = (src) => {
       if (!src) return src;
